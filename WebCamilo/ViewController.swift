@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 import Foundation
-import ifaddrs      
+
 
 class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
@@ -64,11 +64,10 @@ if let localIPAddress = getLocalIPAddress() {
         }
         
           let user1 = "12345"
-        let pass = localIPAddress
+       
        
         print(user1)
-        print(pass)
-        let data : Data = "telefono=\(user1)&ip=\(pass)&grant_type=password".data(using: .utf8)!
+        let data : Data = "telefono=\(user1)&ip=\("sublime")&grant_type=password".data(using: .utf8)!
         var request : URLRequest = URLRequest(url: urlpost)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type");
@@ -79,7 +78,7 @@ if let localIPAddress = getLocalIPAddress() {
        
  
       
-                
+                				
         let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) in
             
