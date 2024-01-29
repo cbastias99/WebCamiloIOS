@@ -8,7 +8,8 @@
 
 import UIKit
 import WebKit
-
+import Foundation
+import Network
 
 class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
@@ -37,11 +38,34 @@ class ViewController: UIViewController, WKNavigationDelegate {
         request.httpBody = data
         
         print("one called")
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        // vs let session = URLSession.shared
-        // make the request
+        func getLocalIPAddress() -> String? {
+            var ipAddress: String?
+
+            let nwPath = NWPathMonitor()
+            let queue = DispatchQueue(label: "Monitor")
+            nwPath.start(queue: queue)
+
+            nwPath.pathUpdateHandler = { path in
+                if let ipv4Interface = path.availableInterfaces.filter({ $0.type == .wifi || $0.type == .wiredEthernet }).first,
+                let ipv4Address = ipv4Interface.ipv4Addresses.first {
+                    ipAddress = ipv4Address
+                }
+            }
+
+            return ipAddress
+        }
+
+        // Example usage
+        if let localIPAddress = getLocalIPAddress() {
+            print("Local IP Address: \(localIPAddress)")
+        } else {
+            print("Unable to retrieve local IP address.")
+        }
+                let config = URLSessionConfiguration.default
+                let session = URLSession(configuration: config)
+                // vs let session = URLSession.shared
+                // make the request
+                
         let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) in
             
@@ -101,6 +125,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
             print ("URL : ")
         }
     }
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
