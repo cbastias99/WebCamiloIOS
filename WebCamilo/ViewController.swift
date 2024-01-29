@@ -1,51 +1,26 @@
-//
-//  ViewController.swift
-//  WebCamilo
-//
-//  Created by camilo on 1/22/24.
-//  Copyright © 2024 camilo. All rights reserved.
-//
-
 import UIKit
+
 import WebKit
 import Foundation
 
 
 class ViewController: UIViewController, WKNavigationDelegate {
+
     var webView: WKWebView!
+
     private let searchBar = UISearchBar()
+
     private let refreshControl = UIRefreshControl()
+
     private let baseUrl = "https://www.elc.cl/"
+
     private let searchPath = "/search?q="
-    
+
+
+
     override func viewDidLoad() {
+
        print("hola")
-func getLocalIPAddress() -> String? {
-    var address: String?
-
-    // Get list of all interfaces on the local machine
-    var ifaddr: UnsafeMutablePointer<ifaddrs>?
-    guard getifaddrs(&ifaddr) == 0 else { return nil }
-    guard let firstAddr = ifaddr else { return nil }
-
-    // Iterate through the list of interfaces
-    for ptr in sequence(first: firstAddr, next: { $0.pointee.ifa_next }) {
-        let flags = Int32(ptr.pointee.ifa_flags)
-        let addr = ptr.pointee.ifa_addr.pointee
-
-        // Check for running IPv4 or IPv6 interfaces
-        if (flags & (IFF_UP | IFF_RUNNING | IFF_LOOPBACK)) == (IFF_UP | IFF_RUNNING) {
-            if addr.sa_family == UInt8(AF_INET) || addr.sa_family == UInt8(AF_INET6) {
-                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                if (getnameinfo(ptr.pointee.ifa_addr, socklen_t(addr.sa_len),
-                                &hostname, socklen_t(hostname.count),
-                                nil, socklen_t(0), NI_NUMERICHOST) == 0) {
-                    address = String(cString: hostname)
-                    break
-                }
-            }
-        }
-    }
 
     freeifaddrs(ifaddr)
 
@@ -118,32 +93,36 @@ if let localIPAddress = getLocalIPAddress() {
         
         
         webView = WKWebView()
+
         webView.navigationDelegate = self
+
         view = webView
+
         super.viewDidLoad()
-        
+
+         print ("hola2")
+
         //
-       
+
+
+
         let url = URL(string : "https://www.elc.cl/elcapp1/login.php")!
+
         webView.load(URLRequest(url:url))
+
         // Do any additional setup after loading the view, typically from a nib.
+
     }
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!){
-        if let currentURL = webView.url{
-            print("URL cambiada")
-        }
-    }
-    func webView (_ webView: WKWebView, didFinish navigation:WKNavigation!){
-        if let currentURL = webView.url{
-            print ("URL : ")
-        }
-    }
-  
+
+
     override func didReceiveMemoryWarning() {
+
         super.didReceiveMemoryWarning()
+
         // Dispose of any resources that can be recreated.
+
     }
+
 
 
 }
-
