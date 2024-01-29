@@ -1,7 +1,6 @@
 import UIKit
 
 import WebKit
-#include <ifaddrs.h>
 
 
 class ViewController: UIViewController, WKNavigationDelegate {

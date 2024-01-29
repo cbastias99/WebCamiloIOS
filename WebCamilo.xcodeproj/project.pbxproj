@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A28A2892B61823100046B50 /* ip.php in Resources */ = {isa = PBXBuildFile; fileRef = 9A28A2882B61823100046B50 /* ip.php */; };
+		9A49C2F62B67F3D80087A123 /* commit.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A49C2F52B67F3D80087A123 /* commit.c */; };
 		9A6DD7F62B5EFE0C0038C555 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6DD7F52B5EFE0C0038C555 /* AppDelegate.swift */; };
 		9A6DD7F82B5EFE0C0038C555 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6DD7F72B5EFE0C0038C555 /* ViewController.swift */; };
 		9A6DD7FB2B5EFE0D0038C555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6DD7F92B5EFE0C0038C555 /* Main.storyboard */; };
@@ -35,7 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A28A2882B61823100046B50 /* ip.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = ip.php; sourceTree = "<group>"; };
+		9A49C2F42B67F3D80087A123 /* commit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = commit.h; sourceTree = "<group>"; };
+		9A49C2F52B67F3D80087A123 /* commit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = commit.c; sourceTree = "<group>"; };
 		9A6DD7F22B5EFE0C0038C555 /* WebCamilo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebCamilo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6DD7F52B5EFE0C0038C555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A6DD7F72B5EFE0C0038C555 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +80,8 @@
 		9A6DD7E92B5EFE0B0038C555 = {
 			isa = PBXGroup;
 			children = (
+				9A49C2F42B67F3D80087A123 /* commit.h */,
+				9A49C2F52B67F3D80087A123 /* commit.c */,
 				9A6DD7F42B5EFE0C0038C555 /* WebCamilo */,
 				9A6DD8092B5EFE0F0038C555 /* WebCamiloTests */,
 				9A6DD8142B5EFE100038C555 /* WebCamiloUITests */,
@@ -105,7 +108,6 @@
 				9A6DD7FC2B5EFE0D0038C555 /* Assets.xcassets */,
 				9A6DD7FE2B5EFE0D0038C555 /* LaunchScreen.storyboard */,
 				9A6DD8012B5EFE0D0038C555 /* Info.plist */,
-				9A28A2882B61823100046B50 /* ip.php */,
 			);
 			path = WebCamilo;
 			sourceTree = "<group>";
@@ -196,6 +198,7 @@
 				TargetAttributes = {
 					9A6DD7F12B5EFE0C0038C555 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					9A6DD8052B5EFE0F0038C555 = {
@@ -236,7 +239,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A6DD8002B5EFE0D0038C555 /* LaunchScreen.storyboard in Resources */,
-				9A28A2892B61823100046B50 /* ip.php in Resources */,
 				9A6DD7FD2B5EFE0D0038C555 /* Assets.xcassets in Resources */,
 				9A6DD7FB2B5EFE0D0038C555 /* Main.storyboard in Resources */,
 			);
@@ -263,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A49C2F62B67F3D80087A123 /* commit.c in Sources */,
 				9A6DD7F82B5EFE0C0038C555 /* ViewController.swift in Sources */,
 				9A6DD7F62B5EFE0C0038C555 /* AppDelegate.swift in Sources */,
 			);
@@ -430,11 +433,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WebCamilo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DDdisumar.WebCamilo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WebCamilo/WebCamilo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -444,11 +450,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WebCamilo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DDdisumar.WebCamilo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WebCamilo/WebCamilo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
